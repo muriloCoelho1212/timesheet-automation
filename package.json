@@ -1,0 +1,15 @@
+{
+  "name": "timesheet-automation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently -c \"cyan,magenta\" -n \"NEST,NUXT\" \"pnpm --filter api start:dev\" \"pnpm --filter web dev\""  
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
