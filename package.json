@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently -c \"cyan,magenta\" -n \"NEST,NUXT\" \"pnpm --filter api start:dev\" \"pnpm --filter web dev\""  
+    "dev": "concurrently -c \"cyan,magenta\" -n \"NEST,NUXT\" \"pnpm --filter api start:dev\" \"pnpm --filter web dev\"",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^9.2.1"
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
+    "concurrently": "^9.2.1",
+    "husky": "^9.1.7"
   }
 }
