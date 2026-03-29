@@ -1,35 +1,29 @@
-// @ts-check
 import eslint from '@eslint/js';
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
-import globals from 'globals';
 import tseslint from 'typescript-eslint';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import sharedConfig from '@timesheet/eslint-config';
 
-export default tseslint.config(
-  {
-    ignores: ['eslint.config.mjs'],
-  },
+export default [
+  // 1. Regras recomendadas do ESLint
   eslint.configs.recommended,
-  ...tseslint.configs.recommendedTypeChecked,
+
+  // 2. Regras recomendadas do TypeScript
+  ...tseslint.configs.recommended,
+
+  // 3. Integração com o Prettier (evita conflitos de formatação)
   eslintPluginPrettierRecommended,
-  {
-    languageOptions: {
-      globals: {
-        ...globals.node,
-        ...globals.jest,
-      },
-      sourceType: 'commonjs',
-      parserOptions: {
-        projectService: true,
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-  },
+
+  // 4. Nossas regras customizadas (NestJS + Pacote Compartilhado)
   {
     rules: {
+      ...sharedConfig.rules, // <-- Nossas regras globais entram aqui!
+
+      // Regras específicas do NestJS que vieram de fábrica:
+      '@typescript-eslint/interface-name-prefix': 'off',
+      '@typescript-eslint/explicit-function-return-type': 'off',
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
+      // No Nest, geralmente queremos permitir o "any" em alguns casos de injeção de dependência:
       '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-floating-promises': 'warn',
-      '@typescript-eslint/no-unsafe-argument': 'warn',
-      "prettier/prettier": ["error", { endOfLine: "auto" }],
     },
   },
-);
+];

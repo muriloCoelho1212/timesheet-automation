@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently -c \"cyan,magenta\" -n \"NEST,NUXT\" \"pnpm --filter api start:dev\" \"pnpm --filter web dev\"",
-    "prepare": "husky"
+    "prepare": "husky",
+    "format": "prettier --write \"**/*.{ts,js,mjs,json,vue,html,md}\""
   },
   "keywords": [],
   "author": "",
@@ -13,7 +14,13 @@
   "devDependencies": {
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
+    "@typescript-eslint/eslint-plugin": "^8.57.2",
+    "@typescript-eslint/parser": "^8.57.2",
     "concurrently": "^9.2.1",
-    "husky": "^9.1.7"
+    "eslint": "^10.1.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "husky": "^9.1.7",
+    "prettier": "^3.8.1"
   }
 }
