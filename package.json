@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "concurrently -c \"cyan,magenta\" -n \"NEST,NUXT\" \"pnpm --filter api start:dev\" \"pnpm --filter web dev\"",
     "prepare": "husky",
-    "format": "prettier --write \"**/*.{ts,js,mjs,json,vue,html,md}\""
+    "format": "prettier --write \"**/*.{ts,js,mjs,json,vue,html,md}\"",
+    "generate:types": "graphql-codegen"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +15,9 @@
   "devDependencies": {
     "@commitlint/cli": "^20.5.0",
     "@commitlint/config-conventional": "^20.5.0",
+    "@graphql-codegen/cli": "^6.2.1",
+    "@graphql-codegen/typescript": "^5.0.9",
+    "@graphql-codegen/typescript-operations": "^5.0.9",
     "@typescript-eslint/eslint-plugin": "^8.57.2",
     "@typescript-eslint/parser": "^8.57.2",
     "concurrently": "^9.2.1",
