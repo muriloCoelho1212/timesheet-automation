@@ -2,6 +2,45 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+"""Representa um commit feito no Azure DevOps"""
+type AzureCommit {
+  commitId: ID!
+
+  """A mensagem descritiva do commit"""
+  comment: String!
+
+  """Data e hora em que o commit foi submetido (ISO String)"""
+  date: String!
+
+  """Nome do repositório onde o código foi alterado"""
+  repositoryName: String!
+
+  """Nome da branch onde o push foi feito"""
+  branch: String!
+
+  """ID da tarefa associada (se mencionada na mensagem)"""
+  relatedWorkItemId: String
+}
+
+"""Representa um card/tarefa do Azure DevOps"""
+type AzureWorkItem {
+  id: ID!
+
+  """O título da tarefa"""
+  title: String!
+
+  """O estado atual (Ex: Active, Resolved, Closed)"""
+  state: String!
+
+  """O tipo da tarefa (Ex: Bug, User Story, Task)"""
+  type: String!
+
+  """Link direto para abrir a tarefa no navegador"""
+  url: String!
+}
+
 type Query {
   hello: String!
+  myCommits(startDate: String!, endDate: String!): [AzureCommit!]!
+  myWorkItems(startDate: String!, endDate: String!): [AzureWorkItem!]!
 }
